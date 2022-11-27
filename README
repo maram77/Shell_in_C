@@ -1,0 +1,9 @@
+To compile and execute this binary
+1- make sure this binary is executable by running "chmod +x makefile"
+2- Execute the makefile to compile and generate the shell binary "./makefile"
+3- Execute the shell binary by typing "./shell
+
+
+
+//makefile to automate compiling instead of typing gcc every time
+//and then the generated executable is executed in shell
