@@ -8,4 +8,4 @@ char *read_cmd(void);
 
 #endif
 
-//Interface in Java, header file zith function prototypes
+//Interface in Java, header file with function prototypes
