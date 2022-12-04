@@ -6,6 +6,9 @@ void print_prompt2(void);
 
 char *read_cmd(void);
 
+#include "source.h"
+int  parse_and_execute(struct source_s *src);
+
 #endif
 
 //Interface in Java, header file with function prototypes

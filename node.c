@@ -25,15 +25,19 @@ struct node_s *new_node(enum node_type_e type)
 
 void add_child_node(struct node_s *parent, struct node_s *child)
 {
+    // Error handling: absence of a parent or a child 
     if(!parent || !child)
     {
         return;
     }
 
+    // Checking the existence of a first child
     if(!parent->first_child)
     {
         parent->first_child = child;
     }
+    
+    // Appended to the children list 
     else
     {
         struct node_s *sibling = parent->first_child;
@@ -52,21 +56,28 @@ void add_child_node(struct node_s *parent, struct node_s *child)
 
 void set_node_val_str(struct node_s *node, char *val)
 {
-    node->val_type = VAL_STR;
+ 
+    // Setting the val_type of the node to string   node->val_type = VAL_STR;
 
-    if(!val)
+
+    // Value passed is not defined    if(!val)
     {
         node->val.str = NULL;
     }
-    else
+    
+    
+    // Setting node value to the value passed to the functionlse
     {
         char *val2 = malloc(strlen(val)+1);
     
-    	if(!val2)
-        {
+     
+        // Memory allocation for val2 failed
+           {
             node->val.str = NULL;
         }
-        else
+        
+
+        // Copying the value to val2 and setting the node value to val2lse
         {
             strcpy(val2, val);
             node->val.str = val2;
@@ -77,21 +88,24 @@ void set_node_val_str(struct node_s *node, char *val)
 
 void free_node_tree(struct node_s *node)
 {
-    if(!node)
+ 
+    // Error handling   if(!node)
     {
         return;
     }
 
     struct node_s *child = node->first_child;
     
-    while(child)
+
+   // Checking the existence of children, if so, free them recursively while(child)
     {
         struct node_s *next = child->next_sibling;
         free_node_tree(child);
         child = next;
     }
     
-    if(node->val_type == VAL_STR)
+
+    // Checking if the given node contains a value to free before freeing it itselfif(node->val_type == VAL_STR)
     {
         if(node->val.str)
         {
