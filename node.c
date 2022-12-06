@@ -8,6 +8,7 @@
 
 
 struct node_s *new_node(enum node_type_e type)
+ // Create a new node and set its type field
 {
     struct node_s *node = malloc(sizeof(struct node_s));
 
@@ -50,7 +51,7 @@ void add_child_node(struct node_s *parent, struct node_s *child)
     	sibling->next_sibling = child;
         child->prev_sibling = sibling;
     }
-    parent->children++;
+    parent->children++;  // Increment the root's node children
 }
 
 
@@ -105,7 +106,7 @@ void free_node_tree(struct node_s *node)
     }
     
 
-    // Checking if the given node contains a value to free before freeing it itselfif(node->val_type == VAL_STR)
+    // Checking if the given node contains a value to free before freeing it itself if(node->val_type == VAL_STR)
     {
         if(node->val.str)
         {
